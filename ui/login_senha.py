@@ -76,7 +76,7 @@ class Ui_MainWindow(object):
         self.input_senha.setMouseTracking(False)
         self.input_senha.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.input_senha.setInputMask(u"")
-        self.input_senha.setEchoMode(QLineEdit.EchoMode.Password)
+        # Removido o EchoMode.Password, deixando como padrão (Normal)
         self.input_senha.setCursorPosition(0)
         self.input_senha.setDragEnabled(False)
         self.input_senha.setReadOnly(False)
@@ -88,9 +88,9 @@ class Ui_MainWindow(object):
         self.input_usuario = QLineEdit(self.frame)
         self.input_usuario.setObjectName(u"input_usuario")
         self.input_usuario.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.input_usuario.setEchoMode(QLineEdit.EchoMode.Password)  # Adicionado EchoMode.Password
 
         self.gridLayout_2.addWidget(self.input_usuario, 5, 0, 1, 1)
-
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.frame)
 
@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
         font2.setBold(True)
         self.botao_entrar.setFont(font2)
         self.botao_entrar.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
-"bolder-radius:50px;")
+"border-radius:50px;")  # Corrigido 'bolder-radius' para 'border-radius'
 
         self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_entrar)
 
@@ -110,7 +110,6 @@ class Ui_MainWindow(object):
         self.botao_cadastrar.setStyleSheet(u"background-color: rgb(143, 191, 131);")
 
         self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_cadastrar)
-
 
         self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
@@ -130,4 +129,3 @@ class Ui_MainWindow(object):
         self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Entrar", None))
         self.botao_cadastrar.setText(QCoreApplication.translate("MainWindow", u"Cadastrar-se", None))
     # retranslateUi
-
