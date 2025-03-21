@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'login_senha.ui'
+## Form generated from reading UI file 'login_cadastro.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -102,14 +102,7 @@ class Ui_MainWindow(object):
         self.botao_entrar.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
 "bolder-radius:50px;")
 
-        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_entrar)
-
-        self.pushButton = QPushButton(self.frame_2)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setFont(font2)
-        self.pushButton.setStyleSheet(u"background-color: rgb(143, 191, 131);")
-
-        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.pushButton)
+        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_entrar)
 
 
         self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
@@ -123,11 +116,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.txt_usuario.setText(QCoreApplication.translate("MainWindow", u"Usu\u00e1rio:", None))
-        self.txt_senha.setText(QCoreApplication.translate("MainWindow", u"Senha:", None))
+        self.txt_usuario.setText(QCoreApplication.translate("MainWindow", u"Novo nome de usu\u00e1rio:", None))
+        self.txt_senha.setText(QCoreApplication.translate("MainWindow", u"Nova senha:", None))
         self.txt_login.setText(QCoreApplication.translate("MainWindow", u"LOGIN", None))
         self.input_senha.setPlaceholderText("")
-        self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Entrar", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Cadastrar-se", None))
+        self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"cadastrar", None))
     # retranslateUi
 

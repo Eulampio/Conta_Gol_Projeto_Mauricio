@@ -72,7 +72,7 @@ border-radius:20px;</string>
              </font>
             </property>
             <property name="text">
-             <string>Usuário:</string>
+             <string>Novo nome de usuário:</string>
             </property>
            </widget>
           </item>
@@ -84,7 +84,7 @@ border-radius:20px;</string>
              </font>
             </property>
             <property name="text">
-             <string>Senha:</string>
+             <string>Nova senha:</string>
             </property>
            </widget>
           </item>
@@ -145,7 +145,7 @@ border-radius:20px;</string>
          </layout>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="2" column="1">
         <widget class="QPushButton" name="botao_entrar">
          <property name="font">
           <font>
@@ -157,22 +157,7 @@ border-radius:20px;</string>
 bolder-radius:50px;</string>
          </property>
          <property name="text">
-          <string>Entrar</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton">
-         <property name="font">
-          <font>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(143, 191, 131);</string>
-         </property>
-         <property name="text">
-          <string>Cadastrar-se</string>
+          <string>cadastrar</string>
          </property>
         </widget>
        </item>
