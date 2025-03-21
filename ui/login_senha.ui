@@ -162,7 +162,7 @@ bolder-radius:50px;</string>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="botao_cadastrar">
          <property name="font">
           <font>
            <bold>true</bold>

@@ -65,7 +65,7 @@ border-radius:20px;</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="1" column="0">
-           <widget class="QLabel" name="txt_usuario">
+           <widget class="QLabel" name="txt_novousuario">
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -77,7 +77,7 @@ border-radius:20px;</string>
            </widget>
           </item>
           <item row="4" column="0">
-           <widget class="QLabel" name="txt_senha">
+           <widget class="QLabel" name="txt_novasenha">
             <property name="font">
              <font>
               <pointsize>12</pointsize>

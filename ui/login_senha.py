@@ -104,12 +104,12 @@ class Ui_MainWindow(object):
 
         self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_entrar)
 
-        self.pushButton = QPushButton(self.frame_2)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setFont(font2)
-        self.pushButton.setStyleSheet(u"background-color: rgb(143, 191, 131);")
+        self.botao_cadastrar = QPushButton(self.frame_2)
+        self.botao_cadastrar.setObjectName(u"botao_cadastrar")
+        self.botao_cadastrar.setFont(font2)
+        self.botao_cadastrar.setStyleSheet(u"background-color: rgb(143, 191, 131);")
 
-        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.pushButton)
+        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_cadastrar)
 
 
         self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
@@ -128,6 +128,6 @@ class Ui_MainWindow(object):
         self.txt_login.setText(QCoreApplication.translate("MainWindow", u"LOGIN", None))
         self.input_senha.setPlaceholderText("")
         self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Entrar", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Cadastrar-se", None))
+        self.botao_cadastrar.setText(QCoreApplication.translate("MainWindow", u"Cadastrar-se", None))
     # retranslateUi
 

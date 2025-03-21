@@ -48,19 +48,19 @@ class Ui_MainWindow(object):
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout_2 = QGridLayout(self.frame)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.txt_usuario = QLabel(self.frame)
-        self.txt_usuario.setObjectName(u"txt_usuario")
+        self.txt_novousuario = QLabel(self.frame)
+        self.txt_novousuario.setObjectName(u"txt_novousuario")
         font = QFont()
         font.setPointSize(12)
-        self.txt_usuario.setFont(font)
+        self.txt_novousuario.setFont(font)
 
-        self.gridLayout_2.addWidget(self.txt_usuario, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.txt_novousuario, 1, 0, 1, 1)
 
-        self.txt_senha = QLabel(self.frame)
-        self.txt_senha.setObjectName(u"txt_senha")
-        self.txt_senha.setFont(font)
+        self.txt_novasenha = QLabel(self.frame)
+        self.txt_novasenha.setObjectName(u"txt_novasenha")
+        self.txt_novasenha.setFont(font)
 
-        self.gridLayout_2.addWidget(self.txt_senha, 4, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.txt_novasenha, 4, 0, 1, 1)
 
         self.txt_login = QLabel(self.frame)
         self.txt_login.setObjectName(u"txt_login")
@@ -116,8 +116,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.txt_usuario.setText(QCoreApplication.translate("MainWindow", u"Novo nome de usu\u00e1rio:", None))
-        self.txt_senha.setText(QCoreApplication.translate("MainWindow", u"Nova senha:", None))
+        self.txt_novousuario.setText(QCoreApplication.translate("MainWindow", u"Novo nome de usu\u00e1rio:", None))
+        self.txt_novasenha.setText(QCoreApplication.translate("MainWindow", u"Nova senha:", None))
         self.txt_login.setText(QCoreApplication.translate("MainWindow", u"LOGIN", None))
         self.input_senha.setPlaceholderText("")
         self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"cadastrar", None))
