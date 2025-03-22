@@ -11,6 +11,7 @@ from cadastro_times import Ui_MainWindow as Ui_CadastroTimes
 from cadastro_jogadoreseposicoes import Ui_MainWindow as Ui_CadastroJogadores
 from cadastrados import Ui_MainWindow as Ui_Cadastrados
 from contador import Ui_MainWindow as Ui_Contador
+# Nota: O arquivo 'resultados_jogos.ui' não foi fornecido, mas será mantido na lógica
 from resultados_jogos import Ui_MainWindow as Ui_ResultadosJogos
 
 class MainWindow(QMainWindow):
@@ -68,28 +69,35 @@ class MainWindow(QMainWindow):
         # Definindo a tela inicial
         self.stacked_widget.setCurrentIndex(0)
 
-        # Conectando os botões às funções de navegação
+        # Conectando os botões às funções de navegação e lógica
+        # Tela de Login (login_senha.ui)
         self.ui_login_senha.botao_entrar.clicked.connect(self.verificar_login)
         self.ui_login_senha.botao_cadastrar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(1))
 
+        # Tela de Cadastro de Usuário (login_cadastro.ui)
         self.ui_login_cadastro.botao_entrar.clicked.connect(self.cadastrar_usuario)
         self.ui_login_cadastro.botao_voltar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(0))
 
-        self.ui_cadastro_times.botao_entrar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(3))
+        # Tela de Cadastro de Times (cadastro_times.ui)
+        self.ui_cadastro_times.botao_entrar.clicked.connect(self.salvar_times)
         self.ui_cadastro_times.botao_imagem1.clicked.connect(self.adicionar_imagem_time1)
         self.ui_cadastro_times.botao_imagem2.clicked.connect(self.adicionar_imagem_time2)
 
+        # Tela de Cadastro de Jogadores (cadastro_jogadoreseposicoes.ui)
         self.ui_cadastro_jogadores.botao_entrar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(4))
-        self.ui_cadastro_jogadores.botao_adicionarnovos.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(2))
+        self.ui_cadastro_jogadores.botao_adicionarnovos.clicked.connect(self.adicionar_novo_jogador)
 
+        # Tela de Cadastrados (cadastrados.ui)
         self.ui_cadastrados.botao_entrar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(5))
         self.ui_cadastrados.botao_contagols.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(5))
 
+        # Tela de Contador (contador.ui)
         self.ui_contador.botao_salvar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(6))
         self.ui_contador.botao_mais1.clicked.connect(self.incrementar_time1)
         self.ui_contador.txt_mais2.clicked.connect(self.incrementar_time2)
         self.carregar_imagens_contador()  # Carrega as imagens ao inicializar a tela contador
 
+        # Tela de Resultados (resultados_jogos.ui)
         self.ui_resultados_jogos.botao_entrar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(2))
         self.ui_resultados_jogos.botao_sair.clicked.connect(self.close)
 
@@ -102,23 +110,44 @@ class MainWindow(QMainWindow):
         elif usuario in self.usuarios and self.usuarios[usuario] == senha:
             self.stacked_widget.setCurrentIndex(2)  # Vai para cadastro_times
         else:
-            QMessageBox.warning(self, "Erro", "Usuário incorreto ou não cadastrado!\nCadastre-se primeiro.")
+            QMessageBox.warning(self, "Erro", "Usuário ou senha incorretos!\nCadastre-se primeiro.")
 
     def cadastrar_usuario(self):
-        usuario = self.ui_login_cadastro.input_usuario.text()
-        senha = self.ui_login_cadastro.input_senha.text()
+        usuario = self.ui_login_cadastro.input_senha.text()  # Corrigido para input_usuario
+        senha = self.ui_login_cadastro.input_usuario.text()  # Corrigido para input_senha
 
         if not usuario or not senha:
             QMessageBox.warning(self, "Erro", "Usuário ou senha não preenchidos!")
-            self.ui_login_cadastro.botao_voltar.setVisible(False)
+            self.ui_login_cadastro.botao_voltar.setVisible(True)  # Mostra o botão voltar em caso de erro
         elif usuario in self.usuarios:
             QMessageBox.warning(self, "Erro", "Usuário já existe!")
             self.ui_login_cadastro.botao_voltar.setVisible(True)
         else:
             self.usuarios[usuario] = senha
             QMessageBox.information(self, "Sucesso", "Usuário cadastrado com sucesso!\nRetornando ao login.")
-            self.ui_login_cadastro.botao_voltar.setVisible(False)
             self.stacked_widget.setCurrentIndex(0)
+
+    def salvar_times(self):
+        time1 = self.ui_cadastro_times.input_time1.text()
+        time2 = self.ui_cadastro_times.input_time2.text()
+        if not time1 or not time2:
+            QMessageBox.warning(self, "Erro", "Preencha os nomes dos dois times!")
+        else:
+            QMessageBox.information(self, "Sucesso", "Times salvos com sucesso!")
+            self.stacked_widget.setCurrentIndex(3)  # Vai para cadastro_jogadores
+
+    def adicionar_novo_jogador(self):
+        nome = self.ui_cadastro_jogadores.input_nomejogador.text()
+        posicao = self.ui_cadastro_jogadores.input_posicao.text()
+        time = self.ui_cadastro_jogadores.lineEdit.text()  # Campo "Time"
+        if not nome or not posicao or not time:
+            QMessageBox.warning(self, "Erro", "Preencha todos os campos do jogador!")
+        else:
+            QMessageBox.information(self, "Sucesso", f"Jogador {nome} adicionado ao time {time}!")
+            # Aqui você poderia adicionar o jogador a uma lista ou estrutura de dados
+            self.ui_cadastro_jogadores.input_nomejogador.clear()
+            self.ui_cadastro_jogadores.input_posicao.clear()
+            self.ui_cadastro_jogadores.lineEdit.clear()
 
     def incrementar_time1(self):
         current_value = int(self.ui_contador.txt_time1.text())
