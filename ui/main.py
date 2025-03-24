@@ -35,8 +35,15 @@ class MainWindow(QMainWindow):
             )
             self.cursor = self.db.cursor()
             print("Conexão com o banco de dados estabelecida com sucesso!")
+
+            # Testa a conexão com uma query simples
+            self.cursor.execute("SELECT 1")
+            result = self.cursor.fetchone()
+            print("Teste de conexão com o banco:", result)  # Deve exibir (1,)
+
         except Error as e:
             QMessageBox.critical(self, "Erro de Conexão", f"Não foi possível conectar ao banco de dados: {e}")
+            return  # Interrompe a inicialização se a conexão falhar
 
         self.stacked_widget = QStackedWidget(self)
         self.setCentralWidget(self.stacked_widget)
@@ -159,6 +166,7 @@ class MainWindow(QMainWindow):
         time_nome = self.ui_cadastro_jogadores.lineEdit.text().strip()
 
         try:
+            # Verifica se os campos obrigatórios estão preenchidos
             if not nome or not posicao:
                 QMessageBox.warning(self, "Erro", "Os campos 'Nome' e 'Posição' são obrigatórios!")
                 return
@@ -167,44 +175,70 @@ class MainWindow(QMainWindow):
                 QMessageBox.warning(self, "Erro", "O campo 'Time' não pode estar vazio!\nDigite um time para adicionar o jogador.")
                 return
 
-            print(f"Verificando time: {time_nome}")  # Depuração
+            # Verifica se a conexão com o banco está ativa
+            if not self.db.is_connected():
+                print("Conexão com o banco de dados perdida. Tentando reconectar...")
+                self.db.reconnect()
+                self.cursor = self.db.cursor()
+
+            # Verifica se o time existe no banco de dados
             query_verifica_time = "SELECT id_time FROM times WHERE nome = %s"
             self.cursor.execute(query_verifica_time, (time_nome,))
             resultado = self.cursor.fetchone()
-            print(f"Resultado da verificação do time: {resultado}")  # Depuração
 
             if not resultado:
                 QMessageBox.warning(self, "Erro", f"O time '{time_nome}' não foi encontrado no banco de dados!\nCadastre o time na tela de cadastro de times primeiro.")
                 return
 
+            # Se o time existe, obtém o id_time
             id_time = resultado[0]
             print(f"ID do time encontrado: {id_time}")  # Depuração
 
+            # Insere o jogador no banco de dados
             query_inserir = "INSERT INTO jogadores (nome, posicao, id_time) VALUES (%s, %s, %s)"
             self.cursor.execute(query_inserir, (nome, posicao, id_time))
             self.db.commit()
             print(f"Jogador '{nome}' inserido no banco com id_time {id_time}")  # Depuração
 
+            # Verifica se o jogador foi realmente inserido
+            self.cursor.execute("SELECT LAST_INSERT_ID()")
+            ultimo_id = self.cursor.fetchone()[0]
+            print(f"Último ID inserido: {ultimo_id}")  # Confirmação de inserção
+
             QMessageBox.information(self, "Sucesso", f"Jogador '{nome}' adicionado ao time '{time_nome}' com sucesso!")
 
+            # Limpa os campos após o cadastro
             self.ui_cadastro_jogadores.input_nomejogador.clear()
             self.ui_cadastro_jogadores.input_posicao.clear()
             self.ui_cadastro_jogadores.lineEdit.clear()
 
-            print("Antes de atualizar a tabela")  # Depuração
+            # Atualiza a tela de cadastrados imediatamente
             self.carregar_cadastrados()
-            print("Tabela atualizada")  # Depuração
 
         except Error as e:
             QMessageBox.critical(self, "Erro", f"Erro ao adicionar jogador: {e}")
             print(f"Erro ao adicionar jogador: {e}")  # Depuração
+            self.db.rollback()  # Reverte em caso de erro
 
     def salvar_jogadores_e_ir_cadastrados(self):
-        self.carregar_cadastrados()
-        self.stacked_widget.setCurrentIndex(4)
+        # Verifica se a conexão com o banco está ativa
+        if not self.db.is_connected():
+            print("Conexão com o banco de dados perdida. Tentando reconectar...")
+            self.db.reconnect()
+            self.cursor = self.db.cursor()
+
+        self.carregar_cadastrados()  # Carrega os dados mais recentes
+        self.stacked_widget.setCurrentIndex(4)  # Vai para a tela de cadastrados
 
     def carregar_cadastrados(self):
         try:
+            # Verifica se a conexão com o banco está ativa
+            if not self.db.is_connected():
+                print("Conexão com o banco de dados perdida. Tentando reconectar...")
+                self.db.reconnect()
+                self.cursor = self.db.cursor()
+
+            # Query para buscar os jogadores e os nomes dos times associados
             query = """
                 SELECT j.nome, j.posicao, t.nome 
                 FROM jogadores j 
@@ -213,12 +247,34 @@ class MainWindow(QMainWindow):
             self.cursor.execute(query)
             resultados = self.cursor.fetchall()
             print("Resultados da query em carregar_cadastrados:", resultados)  # Depuração
+
+            # Verifica se há resultados
+            if not resultados:
+                print("Nenhum jogador encontrado no banco de dados.")
+                QMessageBox.information(self, "Aviso", "Nenhum jogador cadastrado ainda.")
+                self.ui_cadastrados.treeWidget.clear()
+                return
+
+            # Limpa a tabela antes de adicionar novos dados
             self.ui_cadastrados.treeWidget.clear()
+
+            # Configura as colunas do treeWidget (garantindo que estejam definidas)
+            self.ui_cadastrados.treeWidget.setColumnCount(3)
+            self.ui_cadastrados.treeWidget.setHeaderLabels(["Jogador", "Posição", "Time"])
+
+            # Preenche a tabela com os dados
             for nome, posicao, time in resultados:
                 item = QTreeWidgetItem(self.ui_cadastrados.treeWidget)
-                item.setText(0, nome)
-                item.setText(1, posicao)
-                item.setText(2, time if time else "Sem time")
+                item.setText(0, nome if nome else "Sem nome")  # Coluna 0: Nome do jogador
+                item.setText(1, posicao if posicao else "Sem posição")  # Coluna 1: Posição
+                item.setText(2, time if time else "Sem time")  # Coluna 2: Nome do time
+                print(f"Adicionado à tabela: {nome}, {posicao}, {time}")  # Depuração
+
+            # Ajusta automaticamente o tamanho das colunas
+            self.ui_cadastrados.treeWidget.resizeColumnToContents(0)
+            self.ui_cadastrados.treeWidget.resizeColumnToContents(1)
+            self.ui_cadastrados.treeWidget.resizeColumnToContents(2)
+
         except Error as e:
             QMessageBox.critical(self, "Erro", f"Erro ao carregar jogadores cadastrados: {e}")
             print(f"Erro em carregar_cadastrados: {e}")  # Depuração
