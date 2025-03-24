@@ -98,6 +98,7 @@ class MainWindow(QMainWindow):
             self.ui_cadastro_jogadores.botao_adicionarnovos.clicked.connect(self.adicionar_novo_jogador)
             self.ui_cadastrados.botao_entrar.clicked.connect(self.carregar_cadastrados_e_ir_contador)
             self.ui_cadastrados.botao_contagols.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(5))
+            self.ui_cadastrados.botao_voltar.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(3))  # Novo conexão
             self.ui_contador.botao_salvar.clicked.connect(self.salvar_partida)
             self.ui_contador.botao_mais1.clicked.connect(self.incrementar_time1)
             self.ui_contador.txt_mais2.clicked.connect(self.incrementar_time2)
