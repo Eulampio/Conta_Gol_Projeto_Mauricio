@@ -80,7 +80,7 @@ class Ui_MainWindow(object):
 
         self.img = QLabel(self.frame)
         self.img.setObjectName(u"img")
-        self.img.setPixmap(QPixmap(u"../../../Pictures/Palmeiras_logo.svg.png"))
+        # Removido o Pixmap padrão
 
         self.gridLayout_2.addWidget(self.img, 3, 0, 1, 1)
 
@@ -100,10 +100,9 @@ class Ui_MainWindow(object):
 
         self.img_2 = QLabel(self.frame)
         self.img_2.setObjectName(u"img_2")
-        self.img_2.setPixmap(QPixmap(u"../../../Downloads/png-transparent-sport-club-corinthians-paulista-corinthians-arena-esporte-clube-corinthians-sao-paulo-fc-clube-de-regatas-do-flamengo-corinthians-thumbnail-removebg-preview.png"))
+        # Removido o Pixmap padrão
 
         self.gridLayout_2.addWidget(self.img_2, 3, 2, 1, 1)
-
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.frame)
 
@@ -113,10 +112,9 @@ class Ui_MainWindow(object):
         font3.setBold(True)
         self.botao_salvar.setFont(font3)
         self.botao_salvar.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
-"bolder-radius:50px;")
+"border-radius:50px;")
 
         self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_salvar)
-
 
         self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
@@ -138,4 +136,3 @@ class Ui_MainWindow(object):
         self.img_2.setText("")
         self.botao_salvar.setText(QCoreApplication.translate("MainWindow", u"Salvar", None))
     # retranslateUi
-

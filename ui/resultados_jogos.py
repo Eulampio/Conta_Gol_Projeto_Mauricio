@@ -65,17 +65,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.txt_resultadosdosultimosjogos, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
-
         self.verticalLayout_2.addWidget(self.frame_3)
 
         self.treeWidget = QTreeWidget(self.frame)
         self.treeWidget.setObjectName(u"treeWidget")
         self.treeWidget.setMinimumSize(QSize(200, 100))
-        self.treeWidget.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
-"background-color: rgb(255, 255, 255);")
+        self.treeWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
         self.verticalLayout_2.addWidget(self.treeWidget)
-
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.frame)
 
@@ -85,10 +82,17 @@ class Ui_MainWindow(object):
         font1.setBold(True)
         self.botao_entrar.setFont(font1)
         self.botao_entrar.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
-"bolder-radius:50px;")
+"border-radius:50px;")
 
         self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_entrar)
 
+        # Novo botão "Sair"
+        self.botao_sair = QPushButton(self.frame_2)
+        self.botao_sair.setObjectName(u"botao_sair")
+        self.botao_sair.setFont(font1)
+        self.botao_sair.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
+"border-radius:50px;")
+        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_sair)
 
         self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
@@ -103,10 +107,10 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.txt_resultadosdosultimosjogos.setText(QCoreApplication.translate("MainWindow", u"Resultados dos ultimos jogos", None))
         ___qtreewidgetitem = self.treeWidget.headerItem()
-        ___qtreewidgetitem.setText(3, QCoreApplication.translate("MainWindow", u"Data", None));
-        ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"Placar", None));
-        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Time 2", None));
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Time 1", None));
+        ___qtreewidgetitem.setText(3, QCoreApplication.translate("MainWindow", u"Data", None))
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"Placar", None))
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Time 2", None))
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Time 1", None))
         self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Cadastrar novos", None))
+        self.botao_sair.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
     # retranslateUi
-
