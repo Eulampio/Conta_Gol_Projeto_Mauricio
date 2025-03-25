@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'cadastrados.ui'
+## Form generated from reading UI file 'resultados_jogos.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -51,21 +51,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.frame_3 = QFrame(self.frame)
         self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setEnabled(True)
         self.frame_3.setMinimumSize(QSize(0, 100))
         self.frame_3.setStyleSheet(u"background-color: rgb(143, 191, 131);")
         self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout = QVBoxLayout(self.frame_3)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.txt_cadastrados = QLabel(self.frame_3)
-        self.txt_cadastrados.setObjectName(u"txt_cadastrados")
+        self.txt_resultadosdosultimosjogos = QLabel(self.frame_3)
+        self.txt_resultadosdosultimosjogos.setObjectName(u"txt_resultadosdosultimosjogos")
         font = QFont()
         font.setPointSize(18)
-        self.txt_cadastrados.setFont(font)
+        self.txt_resultadosdosultimosjogos.setFont(font)
 
-        self.verticalLayout.addWidget(self.txt_cadastrados, 0, Qt.AlignmentFlag.AlignHCenter)
-
+        self.verticalLayout.addWidget(self.txt_resultadosdosultimosjogos, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
         self.verticalLayout_2.addWidget(self.frame_3)
 
@@ -76,7 +74,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.treeWidget)
 
-
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.frame)
 
         self.botao_entrar = QPushButton(self.frame_2)
@@ -85,17 +82,17 @@ class Ui_MainWindow(object):
         font1.setBold(True)
         self.botao_entrar.setFont(font1)
         self.botao_entrar.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
-"bolder-radius:50px;")
+"border-radius:50px;")
 
-        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_entrar)
+        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_entrar)
 
-        self.botao_contagols = QPushButton(self.frame_2)
-        self.botao_contagols.setObjectName(u"botao_contagols")
-        self.botao_contagols.setFont(font1)
-        self.botao_contagols.setStyleSheet(u"background-color: rgb(143, 191, 131);")
-
-        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_contagols)
-
+        # Novo botão "Sair"
+        self.botao_sair = QPushButton(self.frame_2)
+        self.botao_sair.setObjectName(u"botao_sair")
+        self.botao_sair.setFont(font1)
+        self.botao_sair.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
+"border-radius:50px;")
+        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_sair)
 
         self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
@@ -108,20 +105,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.txt_cadastrados.setText(QCoreApplication.translate("MainWindow", u"Cadastrados", None))
+        self.txt_resultadosdosultimosjogos.setText(QCoreApplication.translate("MainWindow", u"Resultados dos ultimos jogos", None))
         ___qtreewidgetitem = self.treeWidget.headerItem()
-        ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"time", None));
-        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Posi\u00e7\u00e3o", None));
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Jogador", None));
-        self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Salvar", None))
-        self.botao_contagols.setText(QCoreApplication.translate("MainWindow", u"Conta gols", None))
+        ___qtreewidgetitem.setText(3, QCoreApplication.translate("MainWindow", u"Data", None))
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"Placar", None))
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Time 2", None))
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Time 1", None))
+        self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Cadastrar novos", None))
+        self.botao_sair.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
     # retranslateUi
-
-import sys
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    Form = QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec())

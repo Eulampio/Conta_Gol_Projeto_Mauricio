@@ -91,11 +91,3 @@ class Ui_Form(object):
         self.label_4.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:16pt;\">Time</span></p></body></html>", None))
     # retranslateUi
 
-import sys
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    Form = QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec())

@@ -64,7 +64,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label, 0, Qt.AlignmentFlag.AlignHCenter)
 
-
         self.verticalLayout_2.addWidget(self.frame_3)
 
         self.frame_4 = QFrame(self.frame)
@@ -83,7 +82,6 @@ class Ui_MainWindow(object):
         self.txt_time1.setObjectName(u"txt_time1")
 
         self.gridLayout_3.addWidget(self.txt_time1, 1, 0, 1, 1)
-
 
         self.verticalLayout_2.addWidget(self.frame_4)
 
@@ -104,7 +102,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.botao_imagem1, 1, 0, 1, 1)
 
-
         self.verticalLayout_2.addWidget(self.frame_5)
 
         self.frame_6 = QFrame(self.frame)
@@ -123,7 +120,6 @@ class Ui_MainWindow(object):
         self.input_time2.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
         self.gridLayout_5.addWidget(self.input_time2, 1, 0, 1, 1)
-
 
         self.verticalLayout_2.addWidget(self.frame_6)
 
@@ -144,9 +140,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.botao_imagem2, 1, 0, 1, 1)
 
-
         self.verticalLayout_2.addWidget(self.frame_7)
-
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.frame)
 
@@ -156,10 +150,9 @@ class Ui_MainWindow(object):
         font1.setBold(True)
         self.botao_entrar.setFont(font1)
         self.botao_entrar.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
-"bolder-radius:50px;")
+"border-radius:50px;")  # Corrigido 'bolder-radius' para 'border-radius'
 
         self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_entrar)
-
 
         self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
@@ -181,12 +174,3 @@ class Ui_MainWindow(object):
         self.botao_imagem2.setText(QCoreApplication.translate("MainWindow", u"+", None))
         self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Salvar", None))
     # retranslateUi
-
-import sys
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    Form = QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec())
