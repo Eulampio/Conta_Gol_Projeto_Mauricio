@@ -1,116 +1,131 @@
 # -*- coding: utf-8 -*-
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, Qt)
-from PySide6.QtGui import (QFont)
+################################################################################
+## Form generated from reading UI file 'login_senha.ui'
+##
+## Created by: Qt User Interface Compiler version 6.8.1
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
-                               QLabel, QMainWindow, QPushButton, QSizePolicy,
-                               QTreeWidget, QVBoxLayout, QWidget)
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName(u"MainWindow")
-        MainWindow.setWindowTitle("Cadastro de Jogadores")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(975, 582)
-        MainWindow.setStyleSheet(u"background-color: rgb(34, 139, 34);")  # Verde vibrante para temática de futebol
-
+        MainWindow.setMouseTracking(True)
+        MainWindow.setStyleSheet(u"background-color: rgb(101, 159, 109);")
         self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setEnabled(True)
         self.gridLayout = QGridLayout(self.centralwidget)
-        self.gridLayout.setContentsMargins(10, 10, 10, 10)
-        self.gridLayout.setSpacing(10)
-
-        # Cabeçalho temático
-        self.header = QLabel("⚽ Cadastro de Jogadores ⚽", self.centralwidget)
-        font_header = QFont()
-        font_header.setPointSize(24)
-        font_header.setBold(True)
-        self.header.setFont(font_header)
-        self.header.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.header.setStyleSheet("color: white; margin-bottom: 15px;")
-        self.gridLayout.addWidget(self.header, 0, 0, 1, 1, Qt.AlignmentFlag.AlignCenter)
-
+        self.gridLayout.setObjectName(u"gridLayout")
         self.frame_2 = QFrame(self.centralwidget)
-        self.frame_2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMinimumSize(QSize(500, 500))
         self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.formLayout_2 = QFormLayout(self.frame_2)
-        self.formLayout_2.setContentsMargins(10, 10, 10, 10)
-        self.formLayout_2.setSpacing(10)
-
+        self.formLayout_2.setObjectName(u"formLayout_2")
         self.frame = QFrame(self.frame_2)
-        self.frame.setStyleSheet("background-color: rgb(255, 255, 255); border-radius: 20px; padding: 15px;")
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(900, 700))
+        self.frame.setMaximumSize(QSize(500, 16777215))
+        self.frame.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
+"border-radius:20px;")
         self.frame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
-        self.verticalLayout_2 = QVBoxLayout(self.frame)
-        self.verticalLayout_2.setContentsMargins(10, 10, 10, 10)
-        self.verticalLayout_2.setSpacing(10)
-
-        self.frame_3 = QFrame(self.frame)
-        self.frame_3.setStyleSheet("background-color: rgb(50, 205, 50); border-radius: 10px;")
-        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_3.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.MinimumExpanding)
-        self.frame_3.setMinimumHeight(80)
-
-        self.verticalLayout = QVBoxLayout(self.frame_3)
-        self.txt_cadastrados = QLabel("Jogadores Cadastrados", self.frame_3)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_2 = QGridLayout(self.frame)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.txt_usuario = QLabel(self.frame)
+        self.txt_usuario.setObjectName(u"txt_usuario")
         font = QFont()
-        font.setPointSize(18)
-        font.setBold(True)
-        self.txt_cadastrados.setFont(font)
-        self.txt_cadastrados.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.txt_cadastrados.setStyleSheet("color: white;")
+        font.setPointSize(12)
+        self.txt_usuario.setFont(font)
 
-        self.verticalLayout.addWidget(self.txt_cadastrados)
-        self.verticalLayout_2.addWidget(self.frame_3)
+        self.gridLayout_2.addWidget(self.txt_usuario, 1, 0, 1, 1)
 
-        self.treeWidget = QTreeWidget(self.frame)
-        self.treeWidget.setStyleSheet("background-color: rgb(245, 245, 245); border-radius: 10px; padding: 5px;")
-        self.treeWidget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.treeWidget.setMinimumSize(200, 200)
-        self.verticalLayout_2.addWidget(self.treeWidget)
-        self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.frame)
+        self.txt_senha = QLabel(self.frame)
+        self.txt_senha.setObjectName(u"txt_senha")
+        self.txt_senha.setFont(font)
 
-        button_style = ("background-color: rgb(50, 205, 50); border-radius: 15px; padding: 10px; color: white; font-weight: bold;")
+        self.gridLayout_2.addWidget(self.txt_senha, 4, 0, 1, 1)
+
+        self.txt_login = QLabel(self.frame)
+        self.txt_login.setObjectName(u"txt_login")
         font1 = QFont()
+        font1.setPointSize(15)
         font1.setBold(True)
-        font1.setPointSize(12)
+        self.txt_login.setFont(font1)
 
-        self.botao_contagols = QPushButton("Contar Gols", self.frame_2)
-        self.botao_contagols.setFont(font1)
-        self.botao_contagols.setStyleSheet(button_style)
-        self.botao_contagols.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.botao_contagols.setMinimumHeight(50)
-        self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.botao_contagols)
+        self.gridLayout_2.addWidget(self.txt_login, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
-        self.botao_entrar = QPushButton("Salvar Cadastro", self.frame_2)
-        self.botao_entrar.setFont(font1)
-        self.botao_entrar.setStyleSheet(button_style)
-        self.botao_entrar.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.botao_entrar.setMinimumHeight(50)
-        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_entrar)
+        self.input_senha = QLineEdit(self.frame)
+        self.input_senha.setObjectName(u"input_senha")
+        self.input_senha.setMouseTracking(False)
+        self.input_senha.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.input_senha.setInputMask(u"")
+        # Removido o EchoMode.Password, deixando como padrão (Normal)
+        self.input_senha.setCursorPosition(0)
+        self.input_senha.setDragEnabled(False)
+        self.input_senha.setReadOnly(False)
+        self.input_senha.setCursorMoveStyle(Qt.CursorMoveStyle.LogicalMoveStyle)
+        self.input_senha.setClearButtonEnabled(True)
 
-        self.botao_voltar = QPushButton("Voltar", self.frame_2)
-        self.botao_voltar.setFont(font1)
-        self.botao_voltar.setStyleSheet(button_style)
-        self.botao_voltar.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.botao_voltar.setMinimumHeight(50)
-        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_voltar)
+        self.gridLayout_2.addWidget(self.input_senha, 2, 0, 1, 1)
 
-        self.gridLayout.addWidget(self.frame_2, 1, 0, 1, 1, Qt.AlignmentFlag.AlignCenter)
+        self.input_usuario = QLineEdit(self.frame)
+        self.input_usuario.setObjectName(u"input_usuario")
+        self.input_usuario.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.input_usuario.setEchoMode(QLineEdit.EchoMode.Password)  # Adicionado EchoMode.Password
+
+        self.gridLayout_2.addWidget(self.input_usuario, 5, 0, 1, 1)
+
+        self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.frame)
+
+        self.botao_entrar = QPushButton(self.frame_2)
+        self.botao_entrar.setObjectName(u"botao_entrar")
+        font2 = QFont()
+        font2.setBold(True)
+        self.botao_entrar.setFont(font2)
+        self.botao_entrar.setStyleSheet(u"background-color: rgb(143, 191, 131);\n"
+"border-radius:50px;")  # Corrigido 'bolder-radius' para 'border-radius'
+
+        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.botao_entrar)
+
+        self.botao_cadastrar = QPushButton(self.frame_2)
+        self.botao_cadastrar.setObjectName(u"botao_cadastrar")
+        self.botao_cadastrar.setFont(font2)
+        self.botao_cadastrar.setStyleSheet(u"background-color: rgb(143, 191, 131);")
+
+        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.botao_cadastrar)
+
+        self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+
         QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", "Cadastro de Jogadores", None))
-        header = self.treeWidget.headerItem()
-        header.setText(2, QCoreApplication.translate("MainWindow", "Time", None))
-        header.setText(1, QCoreApplication.translate("MainWindow", "Posição", None))
-        header.setText(0, QCoreApplication.translate("MainWindow", "Jogador", None))
-if __name__ == "__main__":
-    app = QApplication([])
-    MainWindow = QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.showMaximized()  # Inicia maximizado para melhor adaptação à tela
-    app.exec()
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.txt_usuario.setText(QCoreApplication.translate("MainWindow", u"Usu\u00e1rio:", None))
+        self.txt_senha.setText(QCoreApplication.translate("MainWindow", u"Senha:", None))
+        self.txt_login.setText(QCoreApplication.translate("MainWindow", u"LOGIN", None))
+        self.input_senha.setPlaceholderText("")
+        self.botao_entrar.setText(QCoreApplication.translate("MainWindow", u"Entrar", None))
+        self.botao_cadastrar.setText(QCoreApplication.translate("MainWindow", u"Cadastrar-se", None))
+    # retranslateUi
